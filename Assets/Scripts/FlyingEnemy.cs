@@ -23,6 +23,7 @@ public class FlyingEnemyScript : MonoBehaviour
 
     //reference to the player position
     private GameObject player;
+    private EnemySpawner spawner; 
 
     // Start is called before the first frame update
     private void Start()
@@ -99,4 +100,9 @@ public class FlyingEnemyScript : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, lineOfSite);
         Gizmos.DrawWireSphere(transform.position, shootingRange);
     }
+
+    public void Initialize(EnemySpawner spawnerReference)
+    {
+       spawner = spawnerReference;
+  }
 }

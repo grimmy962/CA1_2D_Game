@@ -4,46 +4,33 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-     [SerializeField]
-    private GameObject orangeEnemyPrefab; 
+ [Header("Spawn Settings")]
+    [SerializeField] private GameObject enemyPrefab; 
+    [SerializeField] private float spawnRate = 4f; 
+    [SerializeField] private Transform[] spawnPoints; 
 
-     [SerializeField]
-     private GameObject pinkEnemyPrefab;
+    [Header("Limit Settings")]
+    [SerializeField] private int maxEnemies = 5; 
+    private int currentEnemies = 0; 
 
-     [SerializeField]
-     private GameObject greenEnemyPrefab; 
-    
-    [SerializeField]
-     private float orangeSpawnRate = 3.5f;
-
-     [SerializeField]
-     private float pinkSpawnRate = 5f;
-
-     [SerializeField]
-     private float greenSpawnRate = 10f;
-
-      [Header("Limit Settings")]
-      [SerializeField] private int maxEnemies = 5; 
-      private int currentEnemies = 0; 
-
+    // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(spawnEnemy(orangeSpawnRate, orangeEnemyPrefab));
-        StartCoroutine(spawnEnemy(pinkSpawnRate, pinkEnemyPrefab));
-        StartCoroutine(spawnEnemy(greenSpawnRate, greenEnemyPrefab));
+        InvokeRepeating("SpawnEnemy", spawnRate, spawnRate);
     }
+    void SpawnEnemy(){
+        if(currentEnemies >= maxEnemies) return; 
 
-   private IEnumerator spawnEnemy(float interval, GameObject enemy)
-   {
-        if(currentEnemies >= maxEnemies)
+        Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+        GameObject spawnedEnemy = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
 
-        yield return new WaitForSeconds(interval);
-        GameObject newEnemy = Instantiate(enemy, new Vector3(Random.Range(-5f, 5), Random.Range(-6f, 6f), 0), Quaternion.identity);
-        StartCoroutine(spawnEnemy(interval, enemy));
+        FlyingEnemyScript enemyController = spawnedEnemy.GetComponent<FlyingEnemyScript>();
+        enemyController.Initialize(this);
 
         currentEnemies++;
-   }
-   public void EnemyDied(){
-    currentEnemies--;
-   }
+    }
+    public void EnemyDied(){
+        currentEnemies--;
+    }
+    
 }
