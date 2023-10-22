@@ -16,9 +16,9 @@ public class ChaseControl : MonoBehaviour
         if(collision.CompareTag("Player"))
         {
             foreach(FlyingEnemyScript enemy in enemyArray)
-            {
+           {
                 enemy.chase = true;
-            }
+           }
             
         }
     }
@@ -26,13 +26,11 @@ public class ChaseControl : MonoBehaviour
 //when the player exists the trigger, it will read the tag again and then every enemy will stop the chase
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.CompareTag("Player"))
-        {
-        foreach(FlyingEnemyScript enemy in enemyArray)
-        {
-            enemy.chase = false;
-        }
+         foreach(FlyingEnemyScript enemy in enemyArray)
+           {
+                enemy.chase = false;
+           }
         
         }
 }
-}
+

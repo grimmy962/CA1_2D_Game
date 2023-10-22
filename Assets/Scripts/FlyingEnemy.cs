@@ -16,6 +16,8 @@ public class FlyingEnemyScript : MonoBehaviour
     public bool chase = false;
     public Transform startingPoint;
     public float shootingRange;
+    public float fireRate = 1f;
+    private float nextFireTime;
     public GameObject bullet;
     public GameObject bulletParent;
 
@@ -25,7 +27,7 @@ public class FlyingEnemyScript : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        //we are finding the player, but we need to assign a tag through the unity inspector first to find them
+    //we are finding the player, but we need to assign a tag through the unity inspector first to find them
         player=GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -43,7 +45,7 @@ public class FlyingEnemyScript : MonoBehaviour
 
     //if the player gets out of the radius, the enemy stops following them(thinking they don't exist again) and they return to their starting point
         else
-            ReturnStartPoint();
+   
 
     //flip the enemy and change the rotation on y-axis
         Flip();
@@ -53,25 +55,30 @@ public class FlyingEnemyScript : MonoBehaviour
 //chasing the player
     private void Chase()
     {
-    //we need to change the "location" = to move towards them we need:(position of the enemy, position on which enemy needs to move(that's the position of the player), speed MULTIPLIED BY time(per frame in unity)(which is the formula for distance;)))) )
-        if(Vector2.Distance(transform.position, player.transform.position)<=lineOfSite)
+    //to make things a bit easier we will do a float that will calculate us a distance from the player(where is the player)
+        float distanceFromPlayer = Vector2.Distance(player.transform.position, transform.position);
+    
+    //if the player is in the enemy's line of sight but it won't move if it's in the shooting range
+        if(distanceFromPlayer<=lineOfSite && distanceFromPlayer>shootingRange)
         {
+        //we need to change the "location" = to move towards them we need:(position of the enemy, position on which enemy needs to move(that's the position of the player), speed MULTIPLIED BY time(per frame in unity)(which is the formula for distance;)))) )
             transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position,speed * Time.deltaTime);
-            //change speed, shoot, animation
         }
-        else
+
+    //but if the distance from the player is less or equal than a shooting range
+        else if (distanceFromPlayer<=shootingRange && nextFireTime <Time.time)
         {
-            //reset variable
+        //instantiate = the creation of an object(instance of a given class) in OOP
+            //instantiating an object called bullet from bulletParent + we want no rotation
+            Instantiate(bullet, bulletParent.transform.position, Quaternion.identity);
+        //after one bullet is fired it will take one second for the nemy to fire the next bullet    
+            nextFireTime = Time.time + fireRate;
         }
 
-        //to set the chase to true we need to put some kind of the coolider that would start the chase
+        //to set the chase to true we need to put some kind of the colider that would start the chase
     }
 
-    private void ReturnStartPoint()
-    {
-    //to change the position = to move towards the starting point(change the position to the starting point(wherever the position is), speed multiplied by time per frame(distance formula))
-        transform.position=Vector2.MoveTowards(transform.position, startingPoint.position, speed * Time.deltaTime);
-    }
+  
 
     private void Flip()
     {
@@ -90,5 +97,6 @@ public class FlyingEnemyScript : MonoBehaviour
     private void OnDrawGizmosSelected(){
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, lineOfSite);
+        Gizmos.DrawWireSphere(transform.position, shootingRange);
     }
 }
