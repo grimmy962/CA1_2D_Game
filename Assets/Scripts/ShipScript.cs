@@ -9,6 +9,13 @@ public class ShipScript : MonoBehaviour
     public float hInput;
     public float vInput;
 
+    public Transform bulletSpawn;
+    public float shootingRange;
+    public float fireRate = 1f;
+    private float nextFireTime;
+    public GameObject bullet;
+    public GameObject bulletParent;
+
     // Start is called before the first frame update
     void Start()
     {

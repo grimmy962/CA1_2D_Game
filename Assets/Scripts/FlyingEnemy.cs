@@ -15,6 +15,7 @@ public class FlyingEnemyScript : MonoBehaviour
     public float lineOfSite;
     public bool chase = false;
     public Transform startingPoint;
+    public Transform bulletSpawn;
     public float shootingRange;
     public float fireRate = 1f;
     private float nextFireTime;
@@ -24,6 +25,8 @@ public class FlyingEnemyScript : MonoBehaviour
     //reference to the player position
     private GameObject player;
     private EnemySpawner spawner; 
+
+    public Animator animator;
 
     // Start is called before the first frame update
     private void Start()
@@ -71,7 +74,7 @@ public class FlyingEnemyScript : MonoBehaviour
         {
         //instantiate = the creation of an object(instance of a given class) in OOP
             //instantiating an object called bullet from bulletParent + we want no rotation
-            Instantiate(bullet, bulletParent.transform.position, Quaternion.identity);
+            Instantiate(bullet, bulletSpawn.transform.position, Quaternion.identity);
         //after one bullet is fired it will take one second for the nemy to fire the next bullet    
             nextFireTime = Time.time + fireRate;
         }
