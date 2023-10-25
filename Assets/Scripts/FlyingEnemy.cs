@@ -48,11 +48,11 @@ public class FlyingEnemyScript : MonoBehaviour
         Chase();
 
     //if the player gets out of the radius, the enemy stops following them(thinking they don't exist again) and they return to their starting point
-        else
+    //    else
    
 
     //flip the enemy and change the rotation on y-axis
-        Flip();
+    //    Flip();
     }
 
 
@@ -84,17 +84,17 @@ public class FlyingEnemyScript : MonoBehaviour
 
   
 
-    private void Flip()
-    {
+   // private void Flip()
+   // {
     //if the position on the x-axis is bigger then then the position of the player on the x-axis
-        if(transform.position.x>player.transform.position.x)
+     //   if(transform.position.x>player.transform.position.x)
     //change the rotation - 0,0,0 is the default
     //(so the enemy is on the right side and by default it's facing to the left)   
-        transform.rotation = Quaternion.Euler(0, 0, 0);
+    //    transform.rotation = Quaternion.Euler(0, 0, 0);
     //else the enemy is on the left, so we need to rotate it by 180 degrees on y-axis   
-        else
-            transform.rotation = Quaternion.Euler(0, 100, 0);
-    }
+    //    else
+    //        transform.rotation = Quaternion.Euler(0, 100, 0);
+   // }
 
 //to see how big the line of site will be, and how big and where it's going to be
 //it will be the on the enemy (ofc)
