@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PlayerLives : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class PlayerLives : MonoBehaviour
     public int lives = 3;
     public Image[] livesUI;
     public GameObject explosionPrefab;
+    public GameObject gameOverPanel;
+    public TMP_Text livesText;
+    public PointManager pointManager;
 
     // Start is called before the first frame update
     void Start()
@@ -46,7 +50,10 @@ public class PlayerLives : MonoBehaviour
             if(lives<=0)
             {
                 Destroy(gameObject);
-                SceneManager.LoadScene("GameOver");
+                Time.timeScale = 0;
+                gameOverPanel.SetActive(true);
+                pointManager.highScoreUpdate();
+                
             }
         }
     }
