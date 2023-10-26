@@ -179,3 +179,7 @@ Game Diary
 What I found but probably won’t use for the ca(?)
 
 - https://www.youtube.com/watch?v=zqvgqhsXhqg
+
+video:
+https://clipchamp.com/watch/BZhwbkpRsfA
+https://www.youtube.com/watch?v=-oBICXUb8Nw

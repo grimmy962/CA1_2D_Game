@@ -24,6 +24,8 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //repeatedly invokes a method at a specified interval
+        //spawn enemy = what is going to get invoke, spawn rate = delay before the first invocation (in sec.), spawn rate = time interval between subsequent invocations (also in sec.g)
         InvokeRepeating("SpawnEnemy", spawnRate, spawnRate);
     }
 
