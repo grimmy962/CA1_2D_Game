@@ -104,8 +104,14 @@ public class FlyingEnemyScript : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, shootingRange);
     }
 
+//public = it can be accessed from other classes
+//void = it doesn't return any value
+//takes in one parameter
+//initialize method is used to  set the spawner variable of the current object to a reference of another enemyspawner object
+//(establishing connection)
     public void Initialize(EnemySpawner spawnerReference)
     {
+    //assigns a value of the spawRef. to the spawner
        spawner = spawnerReference;
   }
 }

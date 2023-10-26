@@ -4,16 +4,26 @@ using UnityEngine;
 
 public class ShipScript : MonoBehaviour
 {
-    //it's public because we want it to show up in unity, so that we can change up the value while we're play testing the game
+//it's public because we want it to show up in unity, so that we can change up the value while we're play testing the game
+//speed of the ship
     public float moveSpeed = 5;
+//horizontal input
     public float hInput;
+//vertical input
     public float vInput;
+//stores things like left, right, up or down
 
+//reference to the point in the game where the bullets are going to be spawned
     public Transform bulletSpawn;
+//determines the maximum distance at which the ship can shoot
     public float shootingRange;
+//firing rate of the ship
     public float fireRate = 1f;
+//keeps a track of when the ship can fire again
     private float nextFireTime;
+//reference to the bullet prefab gameobject
     public GameObject bullet;
+//organizes instantiated bullets
     public GameObject bulletParent;
 
     // Start is called before the first frame update
