@@ -91,7 +91,43 @@ References:
 
 - spawner limit
     https://forum.unity.com/threads/enemy-spawner-limit.901520/
+
+- characters animation
     
+    https://www.youtube.com/watch?v=hkaysu1Z-N8
+    
+- shooting projectile
+    
+    https://www.youtube.com/watch?v=NfQ89CD0uyc&list=PLSR2vNOypvs5jmv1YIP_IVtlPnU5yEunL&index=5
+    
+
+- animated explosion
+    
+    https://www.youtube.com/watch?v=srr7jfi1BlY&list=PLSR2vNOypvs5jmv1YIP_IVtlPnU5yEunL&index=4
+    
+- losing lives
+    
+    https://www.youtube.com/watch?v=VMrtDjH7IMA&list=PLSR2vNOypvs5jmv1YIP_IVtlPnU5yEunL&index=5
+    
+- keeping score
+    
+    https://www.youtube.com/watch?v=GXJMjWRAeMY&list=PLSR2vNOypvs5jmv1YIP_IVtlPnU5yEunL&index=6
+    
+- how to pause a game
+    
+    https://www.youtube.com/watch?v=1gvcyybDzgY&list=PLSR2vNOypvs5jmv1YIP_IVtlPnU5yEunL&index=8
+    
+- setting and saving high score
+    
+    https://www.youtube.com/watch?v=6PkdHcVFM6M&list=PLSR2vNOypvs5jmv1YIP_IVtlPnU5yEunL&index=9
+    
+- main menu
+    
+    https://www.youtube.com/watch?v=DX7HyN7oJjE
+    
+- game over screen
+    
+    https://www.youtube.com/watch?v=Bzjat5pskrM
 
 Game Diary
 
